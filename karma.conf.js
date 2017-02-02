@@ -1,10 +1,11 @@
 const path = require('path');
-const webpack = require('./webpack.config')('test');
+const webpack = require('./webpack.config')({ env: 'test' });
 
-webpack.entry = () => ({});
+delete webpack.entry;
 
 module.exports = function karmaConfig(config) {
   config.set({
+    basePath: './',
     frameworks: [ 'mocha', 'chai' ],
     reporters: [ 'mocha' ],
     files: [
@@ -14,7 +15,6 @@ module.exports = function karmaConfig(config) {
       'test/index.js': [ 'webpack', 'sourcemap' ]
     },
     browsers: [ 'PhantomJS' ],
-    singleRun: true,
     webpack: webpack,
     webpackMiddleware: {
       noInfo: true
@@ -22,9 +22,9 @@ module.exports = function karmaConfig(config) {
     mochaReporter: {
       showDiff: true
     },
-    reporters: [ 'progress', 'coverage' ],
-    coverageReporter: {
-        type: 'lcov'
+    reporters: [ 'progress', 'coverage-istanbul' ],
+    coverageIstanbulReporter: {
+      reports: [ 'lcov' ]
     }
   });
 };

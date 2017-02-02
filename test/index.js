@@ -1,2 +1,4 @@
 const src = require.context("../src", true, /.(js|jsx)$/);
-src.keys().forEach(src);
+
+// load all of our code (excpet for your app index);
+src.keys().filter(function(i) { return i !== './index.jsx' }).forEach(src);

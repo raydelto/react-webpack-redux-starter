@@ -8,20 +8,22 @@ const PATHS = require('./paths');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
+module.exports = (conf) => ({
   output: {
     path: './build',
     publicPath: '/',
     filename: '[name].[hash].js'
   },
   module: {
-    loaders: [{
-      test: /\.(scss|css|sass)?$/,
-      loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: ['css-loader', `sass-loader`]
-      })
-    }]
+    rules: [
+      {
+        test: /\.(scss|css|sass)?$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]', 'sass-loader']
+        })
+      }
+    ]
   },
 	devtool: 'source-map',
   plugins: [
@@ -33,7 +35,10 @@ module.exports = {
     new CleanPlugin([PATHS.build], {
       root: process.cwd() // because Windows
     }),
-    new ExtractTextPlugin('styles/[name].[hash].css'),
+    new ExtractTextPlugin({
+      filename: 'styles/[name].[hash].css',
+      allChunks: true
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: (module, count) => {
@@ -42,6 +47,7 @@ module.exports = {
       }
     }),
     new webpack.optimize.CommonsChunkPlugin({
+      async: true,
       names: ['vendor', 'manifest']
     }),
     new webpack.LoaderOptionsPlugin({
@@ -56,9 +62,10 @@ module.exports = {
         keep_fnames: true
       },
       compress: {
-        screw_ie8: true
+        screw_ie8: true,
+        warnings: false
       },
       comments: false
     })
   ]
-}
+});

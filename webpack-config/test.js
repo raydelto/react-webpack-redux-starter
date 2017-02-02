@@ -1,6 +1,6 @@
 const PATHS = require('./paths');
 
-module.exports = {
+module.exports = (conf) => ({
   externals: {
     'cheerio': 'window',
     'react/addons': 'react',
@@ -11,17 +11,16 @@ module.exports = {
   module: {
     rules: [
       {
-          enforce: 'post',
-          test: /.(js|jsx)$/,
-          include: [ PATHS.src, PATHS.api ],
-          loader: 'isparta-loader'
+        test: /\.(css|scss)$/,
+        use: ['style-loader', 'css-loader?modules', 'sass-loader']
+      },
+      {
+        test: /.(js|jsx)$/,
+        include: [ PATHS.src ],
+        use: 'istanbul-instrumenter-loader',
+        exclude: /(node_modules|\.spec\.(js|jsx)$)/,
+        enforce: 'post'
       }
-    ],
-		loaders: [
-			{
-				test: /\.(css|scss)$/,
-				loaders: ['style-loader', 'css-loader', 'sass-loader']
-			}
-		]
+    ]
   }
-}
+})

@@ -6,7 +6,8 @@ module.exports = (config, type) => {
 	customConfig.entry = {};
 	customConfig.plugins = [];
 	customConfig.devServer = null;
-	customConfig.resolve.root = PATHS.src;
+	customConfig.resolve.modulesDirectories = customConfig.resolve.modules;
+	delete customConfig.resolve.modules;
 
 	const result = merge(config, customConfig);
 

@@ -1,32 +1,28 @@
-import React from 'react';
-import Login from 'login/login.container';
-import S3Page from 's3-page/s3-page.container';
-import { connect } from 'react-redux';
-import { FB_APP_ID } from 'APP_CONFIG';
-import { Map } from 'immutable';
+import React, { PropTypes } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { I18nextProvider } from 'react-i18next';
+import i18n from 'i18n-config';
 
-
-class App extends React.Component {
-  render() {
-    const { auth } = this.props;
-
-    const isLoggedIn = auth.includes('accessToken');
-
-    return (
-      <div>
-        { isLoggedIn ? <S3Page /> : null }
-        { !isLoggedIn ? <Login appId={ FB_APP_ID } /> : null }
-      </div>
-    );
-  }
+/*
+  This is a simple wrapper around the application which defines elements common
+  to the application.
+*/
+const App = ({ children }) => {
+  return (
+    <MuiThemeProvider>
+      <I18nextProvider i18n={ i18n }>
+        <div>
+          {
+            children
+          }
+        </div>
+      </I18nextProvider>
+    </MuiThemeProvider>
+  );
 }
 
-const mapState = (state, props) => ({
-  auth: state.get('auth')
-});
+App.propTypes = {
+  children: PropTypes.node
+}
 
-App.defaultProps = {
-  auth: Map()
-};
-
-export default connect(mapState)(App);
+export default App;

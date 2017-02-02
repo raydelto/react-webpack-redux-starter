@@ -3,6 +3,52 @@
 Personal starter kit for React, Webpack2 and Redux starter kit.
 Nothing is guaranteed to work, nothing is guaranteed to be maintained.
 
+## What do I Start With?
+By default, this package comes with the following packages:
+
+1. **react / react-dom**; used for the rendering of the application / definition of components
+
+2. **redux / react-redux**; used for storing / managing state and connecting it to your react components
+
+3. **immutable / immutable-prop-types / react-immutable-render-mixin**; used for managing your  data without having to worry about mutations. the additional libraries deal with the changes that immutable brings into the application
+
+4. **react-router / react-router-redux**; used to manage routing and handle updates to routes. react-router-redux connects this information into your redux state store for easy access.
+
+5. **material-ui**; hooks for Google's Material UI standard. Useful if you don't want to start with zero styling.
+
+6.  **normalizr / reslect**; used to simplify interactions with "nested" data and redux. see their docs for more information.
+
+7.  **redux-actions**; used to remove boiler plate code when defining actions and handling those actions; also helps standardize your action definitions.
+
+8. **i18next / react-i18n**; i18n helpers for react. currently, only setup for dead-simple internationalization.
+
+## What does the Webpack Config produce?
+
+With no changes to the application; you can expect the following files when running a build:
+
+1. **main.*hash*.js / main.*hash*.js.map**; the "meat of the application"; everything that the entry point and it's dependencies include. Bundle is of size: 10.8Kb
+
+2. **vendor.*hash*.js / vendor.*hash*.js.map**; all the files that are included through node_modules. These are seperated as they make up the bulk of the application and should not change often. Bundle is of size: 595Kb
+
+4. **x.*hash*.js / x.*hash*.js.map**; a "split" bundle off of main. bundle sizes vary.
+
+## Scripts
+This package comes with the following scripts to begin:
+
+1. **npm run start**: Run the webpack-dev-server with hot-reloading. Uses src/index.jsx as the entry point. Webserver launches at https://localhost:8080.
+
+2. **npm run build**: Builds the application using minifcation, tree shaking and bundle splitting. This would be used to produce your "production build". Assets are output to the /build folder
+
+3. **npm run storybook**: Runs the @kadira/storybook package. This lets you see your "stories" and interact with them. Useful for rapid prototyping of components. Webserver launches at http://localhost:9001.
+
+4. **npm run stats**: Runs the webpack-bundle-analyzer which starts a local webserver that details the contents of your package bundle. Useful in finding "problem" dependencies. Webserver launches at http://localhost:8888.
+
+5. **npm run serve:prod**: Runs the build command and than a simple http-server serving the build folder. Used to verify that nothing "wonky" happend during a build and that all assets are properly being copied / packaged. Should be run before issuing a PR. Webserver launches at http://localhost:8080.
+
+6. **npm run test**: Runs the karma test suite. This will create the /coverage folder with lcov coverage reports. Coverage, by default, is only run against src/.
+
+7. **npm run test:watch**: Same as 6; except test will continue to run.
+
 ## Dependencies
 
 | npm package name | Licence      | Explanation                                                                     |
@@ -16,14 +62,13 @@ Nothing is guaranteed to work, nothing is guaranteed to be maintained.
 | react-immutable-proptypes | MIT | Handles proptypes for immutable data |
 | react-autobind | MIT | Helper to bind context in react components |
 | redux-thunk | MIT | Handles "async" actions in redux. |
-| fetch-ponyfill | MIT | CommonJS wrapepr for Github's fetch polyfill |
-| bluebird | MIT | Promises implementation. Preferred over es6-promise for it's performance |
 | redux-actions | MIT | Helpers for creating and handling actions for redux |
 | reselect | MIT | Helpers for manipulating data stores efficently |
 | normalizr | MIT | Handles normalization (flattening) of deeply nested JSON. |
 | redux-normalizr-middleware | MIT | Handles "normalization" of data passing through redux |
-| aws-sdk | Apache-2.0 | Used to demo some functionality in the app |
 | react-facebook-login | MIT | Simplify the login process with Facebook, primarily for demoing aws-sdk |
+| i18next | MIT | Handles internationalization |
+| react-i18next | MIT | Handles linking i18next to react components |
 
 ## Development Dependencies
 
@@ -66,5 +111,10 @@ Nothing is guaranteed to work, nothing is guaranteed to be maintained.
 | webpack-bundle-analyzer         | MIT          | Analyzes resources produced by Webpack and creates an interactive interface for analysis                                                           |
 | webpack-dev-server              | MIT          | Handles calling webpack and hosting of assets for local development                                                                                |
 | webpack-merge                   | MIT          | Handles merging multiple webpack configuration files                                                                                               |
-| isparta-loader                  | MIT          | Handles calculating for pre-transpiled source |
+| istanbul-instrumenter-loader               | MIT          | Handles calculating coverage |
 | karma-coverage | WTFPL | Responsible for generating coverage reports for Karma |
+| karma-coverage-istanbul-reporter | MIT | Handles linking istanbul with karma to produce coverage reports |
+| eslint | MIT | Handles verifying code-quality standards |
+| eslint-loader | MIT | Handles linking ESLint with Webpack |
+| eslint-plugin-mocha | MIT | Handles ESLint rules with Mocha |
+| eslint-plugin-react | MIT | Handles ESLint rules with JSX files |

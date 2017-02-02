@@ -2,22 +2,25 @@
 
 const merge = require('webpack-merge');
 
-module.exports = (env) => {
+module.exports = (conf) => {
+	const env = conf.env;
+	
 	process.env.BABEL_ENV = env;
 
-	const common = require('./webpack-config/common');
+	const common = require('./webpack-config/common')(conf);
 
 	if(env === 'development' || !env) {
-		return merge(common, require('./webpack-config/dev'));
+		// these are flipped for react-hot-loader entry order requirements
+		return merge(require('./webpack-config/dev')(conf), common);
 	}
 
 	if(env === 'test') {
-		return merge(common, require('./webpack-config/test'));
+		return merge(common, require('./webpack-config/test')(conf));
 	}
 
 	if(env === 'stats') {
-		return merge(common, require('./webpack-config/build'), require('./webpack-config/analyze'));
+		return merge(common, require('./webpack-config/build')(conf), require('./webpack-config/analyze')(conf));
 	}
 
-	return merge(common, require('./webpack-config/build'));
+	return merge(common, require('./webpack-config/build')(conf));
 };
