@@ -9,7 +9,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook --dont-track",
     "stats": "webpack --env.env stats",
     "stats:json": "webpack --env.env production --json > stats.json",
-    "serve:prod": "npm run build && lite-server",
+    "serve:prod": "npm run build && lite-server -c bs-config.js",
     "test": "karma start --single-run true",
     "test:watch": "karma start --single-run false"
   },
@@ -22,8 +22,8 @@
   "bugs": {
     "url": "https://github.com/john-benson/react-webpack-redux-starter/issues"
   },
-  "engines" : {
-    "node" : ">=4.7.0",
+  "engines": {
+    "node": ">=4.7.0",
     "npm": ">=4.1.0"
   },
   "homepage": "https://github.com/john-benson/total-cost-web#readme",
@@ -40,6 +40,7 @@
     "chai": "~3.5.0",
     "chai-enzyme": "~0.6.1",
     "clean-webpack-plugin": "~0.1.15",
+    "compression": "^1.6.2",
     "css-loader": "~0.26.1",
     "enzyme": "~2.7.1",
     "eslint": "~3.15.0",
