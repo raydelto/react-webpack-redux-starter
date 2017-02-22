@@ -1,10 +1,8 @@
-import { connect } from 'react-redux';
+import hocs from 'common-hocs';
 import { selectCurrentRoles } from 'login-page/selectors';
 import { selectValue } from './selectors';
 import { countChanged, countChangedSlow  } from './actions';
 import Counter from './counter.presentation';
-import { translate } from 'react-i18next';
-import authorized from 'authorized';
 
 const mapState = (state, props) => ({
   currentRoles: selectCurrentRoles(state, props),
@@ -15,4 +13,8 @@ const mapDispatch = {
   onAdd: countChanged, onAddSlowly: countChangedSlow
 };
 
-export default translate(['translation'])(connect(mapState, mapDispatch)(authorized(['user'])(Counter)));
+export default hocs({
+  redux: { mapState, mapDispatch },
+  i18n: ['translation'],
+  auth: ['user']
+})(Counter);
