@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+import { RND_API_URL } from 'APP_CONFIG';
 
 export const COUNT_CHANGED = 'COUNT_CHANGED';
 export const countChanged = createAction(COUNT_CHANGED);
@@ -14,6 +15,18 @@ export const countChanged = createAction(COUNT_CHANGED);
 */
 export const countChangedSlow = (amnt) => {
   return (dispatch) => {
-    setTimeout(() => dispatch(countChanged(amnt)), Math.floor(Math.random() * 1000));
+    return fetch(RND_API_URL)
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+
+        return res.text();
+      })
+      .then(val => {
+        const result = amnt + parseInt(val);
+
+        return dispatch(countChanged(result));
+      })
   }
 }

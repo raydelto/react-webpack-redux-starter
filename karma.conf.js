@@ -9,6 +9,8 @@ module.exports = function karmaConfig(config) {
     frameworks: [ 'mocha', 'chai' ],
     reporters: [ 'mocha' ],
     files: [
+      'node_modules/babel-polyfill/dist/polyfill.js',
+      'node_modules/whatwg-fetch/fetch.js',
       'test/index.js'
     ],
     preprocessors: {

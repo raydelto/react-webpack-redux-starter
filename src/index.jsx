@@ -3,6 +3,7 @@ import React from 'react';
 import { AppContainer } from 'react-hot-loader';
 import AppRouter from 'app-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import 'isomorphic-fetch';
 
 injectTapEventPlugin();
 
