@@ -19,9 +19,7 @@ describe('Counter Component', () => {
       value={ 10 }
       onAdd={ () => {} }
       onAddSlowly={ () => {} }
-      currentRoles={ ['user'] }
-      router={ { authorize: ['user'], push: () => {} } }
-      t={ e => e }
+      t={ () => {} }
     />);
     expect(wrapper.find('h4')).to.contain.text('10');
   });

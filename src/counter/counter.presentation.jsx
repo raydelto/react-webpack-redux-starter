@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import AuthorizedComponent from 'authorized-component';
+import AutobindComponent from 'autobind-component';
 
-class Counter extends AuthorizedComponent {
+class Counter extends AutobindComponent {
   onAdd() {
     const { onAdd, value } = this.props;
 
@@ -27,7 +27,9 @@ class Counter extends AuthorizedComponent {
 
 Counter.propTypes = {
   value: PropTypes.number.isRequired,
-  onAdd: PropTypes.func.isRequired
+  onAdd: PropTypes.func.isRequired,
+  onAddSlowly: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 };
 
 export default Counter;

@@ -11,8 +11,7 @@ export default stories => (
           value={ number('Value', 10) }
           onAdd={ action('on add') }
           onAddSlowly={ action('on add slowly') }
-          currentRoles={ [ 'user' ] }
-          router={ { authorize: ['user'], push: () => {} } }
+          t={ e => e }
         />
     	);
     })
