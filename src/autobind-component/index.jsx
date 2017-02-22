@@ -24,4 +24,10 @@ class AutobindComponent extends React.Component {
   }
 }
 
+// we are default the translation function
+// so we don't have to define it in tests
+AutobindComponent.defaultProps = {
+  t: e => e
+}
+
 export default AutobindComponent;

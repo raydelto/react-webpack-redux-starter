@@ -19,7 +19,6 @@ describe('Counter Component', () => {
       value={ 10 }
       onAdd={ () => {} }
       onAddSlowly={ () => {} }
-      t={ () => {} }
     />);
     expect(wrapper.find('h4')).to.contain.text('10');
   });

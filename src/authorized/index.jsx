@@ -1,7 +1,8 @@
 import AutobindComponent from 'autobind-component';
 import React from 'react';
 import { Set } from 'immutable';
-
+import { selectCurrentRoles } from 'login-page/selectors';
+import { connect } from 'react-redux';
 /**
   This is known as a "Higher Order Component".
 
@@ -14,7 +15,7 @@ export default (roles = []) => (WrappedComponent) => {
     console.warn(`Defined an authorized component without roles. No access will be allowed in ${wrappedDisplayName}`);
   }
 
-  return class extends AutobindComponent {
+  class AuthWrapped extends AutobindComponent {
 
     static redirectTo = '/login';
 
@@ -58,4 +59,8 @@ export default (roles = []) => (WrappedComponent) => {
       return (<WrappedComponent { ...this.props } />)
     }
   }
+
+  // connecting this component so that children don't have to worry about providing
+  // this piece of state.
+  return connect(state => ({ currentRoles: selectCurrentRoles(state) }))(AuthWrapped);
 };

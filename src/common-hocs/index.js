@@ -10,7 +10,7 @@ export default({ i18n, redux, auth }) => WrappedComponent => {
   const _connect = redux ? connect(redux.mapState, redux.mapDispatch) : id;
   const _authorized = auth ? authorized(auth) : id;
 
-  const finalHoc = compose(_translate, _connect, _authorized);
+  const finalHoc = compose(_connect, _translate, _authorized);
 
   return finalHoc(WrappedComponent);
 };
