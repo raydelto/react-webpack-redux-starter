@@ -12,7 +12,6 @@ import { injectAsyncReducer } from 'store';
 */
 export default (store) => ({
   path: 'counter',
-  authorize: ['user'],
   getComponent: (nextState, cb) => require.ensure([], require => {
     const Counter = require('./counter.container').default;
     const reducer = require('./reducer');
