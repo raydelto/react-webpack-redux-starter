@@ -2,6 +2,11 @@ import AutobindComponent from 'autobind-component';
 import React from 'react';
 import { Set } from 'immutable';
 
+/**
+  This is known as a "Higher Order Component".
+
+  They add functionality to other components, but cannot be rendered themselves.
+**/
 export default (roles = []) => (WrappedComponent) => {
   const wrappedDisplayName = WrappedComponent.displayName || WrappedComponent.name;
 
