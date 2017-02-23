@@ -14,13 +14,11 @@ By default, this package comes with the following packages:
 
 4. **react-router / react-router-redux**; used to manage routing and handle updates to routes. react-router-redux connects this information into your redux state store for easy access.
 
-5. **material-ui**; hooks for Google's Material UI standard. Useful if you don't want to start with zero styling.
+5.  **normalizr / reslect**; used to simplify interactions with "nested" data and redux. see their docs for more information.
 
-6.  **normalizr / reslect**; used to simplify interactions with "nested" data and redux. see their docs for more information.
+6.  **redux-actions**; used to remove boiler plate code when defining actions and handling those actions; also helps standardize your action definitions.
 
-7.  **redux-actions**; used to remove boiler plate code when defining actions and handling those actions; also helps standardize your action definitions.
-
-8. **i18next / react-i18n**; i18n helpers for react. currently, only setup for dead-simple internationalization.
+7. **i18next / react-i18n**; i18n helpers for react. currently, only setup for dead-simple internationalization.
 
 ## What does the Webpack Config produce?
 
