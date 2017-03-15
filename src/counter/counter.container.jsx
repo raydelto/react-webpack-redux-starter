@@ -13,6 +13,6 @@ const mapDispatch = {
 
 export default hocs({
   redux: { mapState, mapDispatch },
-  i18n: ['translation'],
+  i18n: ['counter'],
   auth: ['user']
 })(Counter);

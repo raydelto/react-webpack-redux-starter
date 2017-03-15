@@ -14,13 +14,14 @@ class Counter extends AutobindComponent {
     return onAddSlowly(value + 5);
   }
 
+
   render() {
     const { value, t } = this.props;
 
     return (<div>
       <h4>{ value }</h4>
-      <button onClick={ this.onAdd }>{ t('add') }</button>
-      <button onClick={ this.onAddSlow }>{ t('add_slowly') }</button>
+      <button onClick={ this.onAdd }>{ t('counter:add') }</button>
+      <button onClick={ this.onAddSlow }>{ t('counter:add_slowly') }</button>
     </div>);
   }
 }

@@ -32,7 +32,13 @@ module.exports = (conf) => {
 				},
 				{
 					test: /\.json$/,
+					exclude: [ PATHS.translations ],
 					use: 'json-loader'
+				},
+				{
+					test: /\.json$/,
+					include: [ PATHS.translations ],
+					use: [ 'file-loader?name=[path][name].[ext]'  ]
 				},
 				{
 					test: /\.jpe?g$|\.gif$|\.png$/,
@@ -50,7 +56,7 @@ module.exports = (conf) => {
 		},
 		resolve: {
 			extensions: ['.js', '.jsx', '.scss'],
-			modules: [ PATHS.src, PATHS.node_modules ]
+			modules: [ PATHS.src, PATHS.node_modules, PATHS.translations ]
 		},
 		externals: {
 			'APP_CONFIG': JSON.stringify(APP_CONFIG)

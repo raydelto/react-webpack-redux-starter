@@ -1,33 +1,42 @@
 import i18next from 'i18next';
+import i18nextXHRBackend from 'i18next-xhr-backend';
+
+// this registers all files in the translations folder
+// and make them available in the build. this does NOT
+// actually import files, just a reference to the path
+require.context('../../translations', true, /\.json/)
+
+export const getCurrentLanguage = () => {
+  return i18next.language;
+}
+
+export const changeLanguage = (nextLang) => {
+  return i18next.changeLanguage(nextLang);
+}
 
 /**
   Here you can define your i18n (internationalization) configuration.
-  Currently, it is using the dead-simple configuration (no async pulling).
-  If you determine that async fetch would be better, please feel free to
-  update.
 
-  I also chose the first i18n component I found that had a "resonable" number of
-  downloads. There may exist better options out there.
+  Right now it makes two assumptions:
 
-  To test another language, set lng to its key (ie; fr)
+  1. Your only languages are en-US and es-US
+  2. Your translations existing at the root of the project in the translations/
+     folder and are named following the convention /language-code/namespace.json
 
-  In order to access these values, you need to include HoC into your components.
-  Take a look at the counter for an example.
+  If those two conditions are met, you only need to ensure that you define
+  the correct name spaces along with your containers and you should be good
+  to go.
 **/
-export default i18next.init({
-  lng: 'en',
-  resources: {
-    en: {
-      translation: {
-        "add": "Add",
-        "add_slowly":  "Add Slowly"
-      }
-    },
-    fr: {
-      translation: {
-        "add": "Ajouter",
-        "add_slowly":  "Ajouter lentement"
-      }
+export default i18next
+  .use(i18nextXHRBackend)
+  .init({
+    lng: 'en-US',
+    whitelist: [ 'en-US', 'es-US' ],
+    ns: 'common',
+    backend: {
+      loadPath: 'translations/{{lng}}/{{ns}}.json',
+      addPath: 'translations/{{lng}}/{{ns}}.json',
     }
-  }
-});
+  });
+
+window.i18next = i18next;

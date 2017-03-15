@@ -2,6 +2,8 @@ import React from 'react';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
+import { I18nextProvider } from 'react-i18next';
+import i18n from 'i18n-config';
 import routes from './routes';
 import initStore from 'store';
 
@@ -26,7 +28,9 @@ export const history = syncHistoryWithStore(browserHistory, store, {
 const AppRouter = () => {
   return (
     <Provider store={ store }>
-      <Router history={ history } routes={ routes(store) }/>
+      <I18nextProvider i18n={ i18n }>
+        <Router history={ history } routes={ routes(store) }/>
+      </I18nextProvider>
     </Provider>
   );
 };

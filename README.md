@@ -66,6 +66,7 @@ This package comes with the following scripts to begin:
 | redux-normalizr-middleware | MIT | Handles "normalization" of data passing through redux |
 | react-facebook-login | MIT | Simplify the login process with Facebook, primarily for demoing aws-sdk |
 | i18next | MIT | Handles internationalization |
+| i18next-xhr-backend | MIT | Handles importing translations at run time | 
 | react-i18next | MIT | Handles linking i18next to react components |
 
 ## Development Dependencies

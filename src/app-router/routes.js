@@ -1,6 +1,7 @@
 import App from 'app';
 import loginRoute from 'login-page/route';
 import counterRoute from 'counter/route';
+import puppiesRoute from 'puppies/route';
 
 /*
   Configuration of our routes. We've opted to stick routing for individual sub-routes
@@ -17,6 +18,6 @@ export default (store) => ({
   component: App,
   indexRoute: { onEnter: (nextState, replace) => replace('/counter') },
   childRoutes: [
-    loginRoute(store), counterRoute(store)
+    loginRoute(store), counterRoute(store), puppiesRoute
   ]
 });

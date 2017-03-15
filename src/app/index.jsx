@@ -1,25 +1,40 @@
 import React, { PropTypes } from 'react';
-import { I18nextProvider } from 'react-i18next';
-import i18n from 'i18n-config';
+import { changeLanguage, getCurrentLanguage } from 'i18n-config';
+import { Link } from 'react-router';
+import hocs from 'common-hocs';
+
+const onChangeLanguage = e => {
+  const nextLang = e.target.value;
+
+  return changeLanguage(nextLang);
+}
 
 /*
   This is a simple wrapper around the application which defines elements common
   to the application.
 */
-const App = ({ children }) => {
+const App = ({ children, t }) => {
   return (
-    <I18nextProvider i18n={ i18n }>
+    <div>
+      <select value={ getCurrentLanguage() } onChange={ onChangeLanguage }>
+        <option value="en-US">{ t('common:english') }</option>
+        <option value="es-US">{ t('common:spanish') }</option>
+      </select>
+      {
+        children
+      }
       <div>
-        {
-          children
-        }
+        <Link to='/counter'>{ t('common:counter') }</Link>
+        <span> | </span>
+        <Link to='/puppies'>{ t('common:puppies') }</Link>
       </div>
-    </I18nextProvider>
+    </div>
   );
 }
 
 App.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  t: PropTypes.func
 }
 
-export default App;
+export default hocs({ i18n: ['common'] })(App);
