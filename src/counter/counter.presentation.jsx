@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import AutobindComponent from 'autobind-component';
+import styles from './counter.scss';
 
 class Counter extends AutobindComponent {
   onAdd() {
@@ -18,8 +19,8 @@ class Counter extends AutobindComponent {
   render() {
     const { value, t } = this.props;
 
-    return (<div>
-      <h4>{ value }</h4>
+    return (<div className={ styles.counter }>
+      <h4 className={ styles.counterNumber }>{ value }</h4>
       <button onClick={ this.onAdd }>{ t('counter:add') }</button>
       <button onClick={ this.onAddSlow }>{ t('counter:add_slowly') }</button>
     </div>);

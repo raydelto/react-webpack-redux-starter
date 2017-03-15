@@ -18,39 +18,39 @@ module.exports = (conf) => {
 	return {
 		entry: [ PATHS.src ],
 		module: {
-			rules: [
+			loaders: [
 	      {
 	        test: /\.jsx?$/,
-	        use: 'eslint-loader',
+	        loader: 'eslint-loader',
 	        include: [ PATHS.src ],
 					enforce: 'pre'
 	      },
 				{
 					test: /.(js|jsx)$/,
 					include: [ PATHS.src ],
-					use: 'babel-loader'
+					loader: 'babel-loader'
 				},
 				{
 					test: /\.json$/,
 					exclude: [ PATHS.translations ],
-					use: 'json-loader'
+					loader: 'json-loader'
 				},
 				{
 					test: /\.json$/,
 					include: [ PATHS.translations ],
-					use: [ 'file-loader?name=[path][name].[ext]'  ]
+					loader: 'file-loader?name=[path][name].[ext]'
 				},
 				{
 					test: /\.jpe?g$|\.gif$|\.png$/,
-					use: 'file-loader?name=/images/[name].[hash].[ext]'
+					loader: 'file-loader?name=/images/[name].[hash].[ext]'
 				},
 				{
 					test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-					use: 'url-loader?limit=10000&mimetype=application/font-woff&name=/fonts/[name].[hash].[ext]'
+					loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=/fonts/[name].[hash].[ext]'
 				},
 				{
 					test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-					use: 'file-loader?name=/fonts/[name].[hash].[ext]'
+					loader: 'file-loader?name=/fonts/[name].[hash].[ext]'
 				}
 			]
 		},
