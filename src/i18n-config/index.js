@@ -38,5 +38,3 @@ export default i18next
       addPath: 'translations/{{lng}}/{{ns}}.json',
     }
   });
-
-window.i18next = i18next;
