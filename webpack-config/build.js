@@ -15,12 +15,12 @@ module.exports = (conf) => ({
     filename: '[name].[hash].js'
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.(scss|css|sass)?$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]', 'sass-loader']
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: ['css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]', 'sass-loader']
         })
       }
     ]
