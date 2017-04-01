@@ -28,3 +28,8 @@ if (module.hot) {
     renderApp(NextRoot);
   });
 }
+
+window.__APP_INFORMATION = {
+  version: VERSION,
+  release: RELEASE
+};

@@ -1,7 +1,9 @@
 import App from 'app';
-import loginRoute from 'login-page/route';
-import counterRoute from 'counter/route';
-import puppiesRoute from 'puppies/route';
+const ctx = require.context('../', true, /routes\.js/);
+
+export const childRoutes = ctx.keys()
+  .filter(item => item.indexOf('app-router') === -1)
+  .map(item => ctx(item));
 
 /*
   Configuration of our routes. We've opted to stick routing for individual sub-routes
@@ -17,7 +19,5 @@ export default (store) => ({
   path: '/',
   component: App,
   indexRoute: { onEnter: (nextState, replace) => replace('/counter') },
-  childRoutes: [
-    loginRoute(store), counterRoute(store), puppiesRoute
-  ]
+  childRoutes: childRoutes.map(route => route.default(store))
 });
