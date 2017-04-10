@@ -30,8 +30,8 @@ export const changeLanguage = (nextLang) => {
 export default i18next
   .use(i18nextXHRBackend)
   .init({
-    lng: 'en-US',
-    whitelist: [ 'en-US', 'es-US' ],
+    lng: 'en',
+    whitelist: [ 'en' ],
     ns: 'common',
     backend: {
       loadPath: 'translations/{{lng}}/{{ns}}.json',

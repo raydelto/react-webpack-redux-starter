@@ -12,7 +12,6 @@ module.exports = (conf) => {
 
 	const APP_CONFIG = {
 		FB_APP_ID: conf.FB_APP_ID || '1616956521945061',
-		RND_API_URL: 'https://www.random.org/integers/?num=1&min=1&max=6&col=1&base=10&format=plain&rnd=new',
 		RELEASE: new Date().getTime(),
 		VERSION: pkg.version
 	};

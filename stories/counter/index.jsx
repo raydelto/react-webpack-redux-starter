@@ -10,8 +10,8 @@ export default stories => (
     		<Counter
           value={ number('Value', 10) }
           onAdd={ action('on add') }
-          onAddSlowly={ action('on add slowly') }
-          t={ e => e }
+          onRandomPositive={ action('on add positive') }
+          onRandomNegative={ action('on add negative') }
         />
     	);
     })

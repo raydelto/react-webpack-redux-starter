@@ -9,10 +9,16 @@ class Counter extends AutobindComponent {
     return onAdd(value + 5);
   }
 
-  onAddSlow() {
-    const { onAddSlowly, value } = this.props;
+  onRandomPositive() {
+    const { onRandomPositive, value } = this.props;
 
-    return onAddSlowly(value + 5);
+    return onRandomPositive(value);
+  }
+
+  onRandomNegative() {
+    const { onRandomNegative, value } = this.props;
+
+    return onRandomNegative(value);
   }
 
 
@@ -22,7 +28,8 @@ class Counter extends AutobindComponent {
     return (<div className={ styles.counter }>
       <h4 className={ styles.counterNumber }>{ value }</h4>
       <button onClick={ this.onAdd }>{ t('counter:add') }</button>
-      <button onClick={ this.onAddSlow }>{ t('counter:add_slowly') }</button>
+      <button onClick={ this.onRandomPositive }>{ t('counter:add_random_positive') }</button>
+      <button onClick={ this.onRandomNegative }>{ t('counter:add_random_negative') }</button>
     </div>);
   }
 }
@@ -30,7 +37,8 @@ class Counter extends AutobindComponent {
 Counter.propTypes = {
   value: PropTypes.number.isRequired,
   onAdd: PropTypes.func.isRequired,
-  onAddSlowly: PropTypes.func.isRequired,
+  onRandomNegative: PropTypes.func.isRequired,
+  onRandomPositive: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 };
 

@@ -1,5 +1,5 @@
 import App from 'app';
-const ctx = require.context('../', true, /routes\.js/);
+const ctx = require.context('../', true, /route\.js/);
 
 export const childRoutes = ctx.keys()
   .filter(item => item.indexOf('app-router') === -1)

@@ -2,10 +2,9 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import { AppContainer } from 'react-hot-loader';
 import AppRouter from 'app-router';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import { VERSION, RELEASE } from 'APP_CONFIG';
+import 'regenerator-runtime/runtime';
 import 'isomorphic-fetch';
-
-injectTapEventPlugin();
 
 // this file "kicks off" the application.
 // it's where we define where our application will hook into DOM

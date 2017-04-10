@@ -15,8 +15,8 @@ export default (store) => ({
   getComponent: (nextState, cb) => require.ensure([], require => {
     const Counter = require('./counter.container').default;
     const reducer = require('./reducer');
-
-    injectAsyncReducer(store, reducer.REDUCER_NAME, reducer.default);
+    const sagas = require('./sagas').default;
+    injectAsyncReducer(store, reducer.REDUCER_NAME, reducer.default, sagas);
     cb(null, Counter);
   })
 });

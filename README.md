@@ -59,14 +59,14 @@ This package comes with the following scripts to begin:
 | redux-immutable  | BSD-3-Clause | Allows the use of immutable objects at the root redux reducers.                 |
 | react-immutable-proptypes | MIT | Handles proptypes for immutable data |
 | react-autobind | MIT | Helper to bind context in react components |
-| redux-thunk | MIT | Handles "async" actions in redux. |
+| redux-saga | MIT | Handles "async" actions in redux. |
 | redux-actions | MIT | Helpers for creating and handling actions for redux |
 | reselect | MIT | Helpers for manipulating data stores efficently |
 | normalizr | MIT | Handles normalization (flattening) of deeply nested JSON. |
 | redux-normalizr-middleware | MIT | Handles "normalization" of data passing through redux |
 | react-facebook-login | MIT | Simplify the login process with Facebook, primarily for demoing aws-sdk |
 | i18next | MIT | Handles internationalization |
-| i18next-xhr-backend | MIT | Handles importing translations at run time | 
+| i18next-xhr-backend | MIT | Handles importing translations at run time |
 | react-i18next | MIT | Handles linking i18next to react components |
 
 ## Development Dependencies

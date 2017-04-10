@@ -18,7 +18,8 @@ describe('Counter Component', () => {
     const wrapper = shallow(<Counter
       value={ 10 }
       onAdd={ () => {} }
-      onAddSlowly={ () => {} }
+      onRandomPositive={ () => {} }
+      onRandomNegative={ () => {} }
     />);
     expect(wrapper.find('h4')).to.contain.text('10');
   });
