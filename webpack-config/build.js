@@ -41,14 +41,12 @@ module.exports = (conf) => ({
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: (module, count) => {
-        const resource = module.resource;
-        return resource && resource.indexOf(PATHS.node_modules) >= 0;
-      }
+      minChunks: ({ resource }) => /node_modules/.test(resource)
     }),
     new webpack.optimize.CommonsChunkPlugin({
       async: true,
-      names: ['vendor', 'manifest']
+      children: true,
+      minChunks: ({ resource }) => /node_modules/.test(resource)
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
