@@ -18,7 +18,7 @@ export default (defaultState = Map()) => {
 
 export const injectAsyncReducer = (store, name, reducer, sagas) => {
   if(!store.asyncSagas[name]) {
-    store.asyncSagas = sagas;
+    store.asyncSagas[name] = sagas;
     sagaMiddleware.run(sagas);
   }
 
