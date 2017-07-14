@@ -18,6 +18,6 @@ export const childRoutes = ctx.keys()
 export default (store) => ({
   path: '/',
   component: App,
-  indexRoute: { onEnter: (nextState, replace) => replace('/counter') },
+  indexRoute: { onEnter: (nextState, replace) => replace('/greeter') },
   childRoutes: childRoutes.map(route => route.default(store))
 });

@@ -1,0 +1,10 @@
+$greeter-size: 30px;
+.greeter {
+  .greeterContainer {
+    color: white;
+    background: red;
+    width: 800px;
+    text-align: center;
+    font-size: $greeter-size;
+  }
+}

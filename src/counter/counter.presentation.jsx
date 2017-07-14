@@ -6,7 +6,7 @@ class Counter extends AutobindComponent {
   onAdd() {
     const { onAdd, value } = this.props;
 
-    return onAdd(value + 5);
+    return onAdd(value + 1);
   }
 
   onRandomPositive() {
