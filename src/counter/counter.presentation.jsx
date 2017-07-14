@@ -9,6 +9,11 @@ class Counter extends AutobindComponent {
     return onAdd(value + 1);
   }
 
+  onNameChange() {
+    const { onNameChange } = this.props;
+    return onNameChange();
+  }
+
   onRandomPositive() {
     const { onRandomPositive, value } = this.props;
 
@@ -23,13 +28,19 @@ class Counter extends AutobindComponent {
 
 
   render() {
-    const { value, t } = this.props;
+    const { name, value, t } = this.props;
+    let displayName = '';
+    if(name) {
+      displayName = name.name;
+    }
 
-    return (<div className={ styles.counter }>
-      <h4 className={ styles.counterNumber }>{ value }</h4>
-      <button onClick={ this.onAdd }>{ t('counter:add') }</button>
-      <button onClick={ this.onRandomPositive }>{ t('counter:add_random_positive') }</button>
-      <button onClick={ this.onRandomNegative }>{ t('counter:add_random_negative') }</button>
+    return (<div className={styles.counter}>
+      <h4> Name:  {displayName}</h4>
+      <h4 className={styles.counterNumber}>{value}</h4>
+      <button onClick={this.onNameChange}>Get Name</button>      
+      <button onClick={this.onAdd}>{t('counter:add')}</button>
+      <button onClick={this.onRandomPositive}>{t('counter:add_random_positive')}</button>
+      <button onClick={this.onRandomNegative}>{t('counter:add_random_negative')}</button>
     </div>);
   }
 }
